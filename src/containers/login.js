@@ -4,30 +4,31 @@ import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 import "../assets/css/login.css";
-
 import * as Yup from "yup";
 import { useFormik, Form, FormikProvider } from "formik";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-import { CheckToken } from "../library/helper";
-import { authenticateUser } from "../library/store/authentication";
-import { useDispatch } from "react-redux";
+// Static User ID and Password
+const STATIC_USER = {
+  userid: "admin",
+  password: "password123",
+};
 
 export default function LoginPage() {
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const LoginSchema = Yup.object().shape({
-    userid: Yup.string().required("name is required"),
-    password: Yup.string().required("password is required"),
+    userid: Yup.string().required("User ID is required"),
+    password: Yup.string().required("Password is required"),
   });
 
   useEffect(() => {
-    if (CheckToken()) {
+    // Check if token exists and redirect if true
+    if (localStorage.getItem("token")) {
       history.push("/dashboard");
     }
-  }, []);
+  }, [history]);
 
   const formik = useFormik({
     initialValues: {
@@ -36,12 +37,14 @@ export default function LoginPage() {
     },
     validationSchema: LoginSchema,
     onSubmit: (data) => {
-      console.log(data);
-      dispatch(authenticateUser(data));
-
-      setTimeout(() => {
-        formik.setSubmitting(false);
-      }, 2000);
+      // Check if entered credentials match static user
+      if (data.userid === STATIC_USER.userid && data.password === STATIC_USER.password) {
+        // Successful login, save token and redirect to dashboard
+        localStorage.setItem("token", "sample-token"); // Simulating token
+        history.push("/dashboard");
+      } else {
+        alert("Invalid credentials!"); // Invalid credentials handling
+      }
     },
   });
 
@@ -51,7 +54,16 @@ export default function LoginPage() {
     <div className="form-box">
       <div className="fullHeight p-ai-center p-d-flex p-jc-center">
         <div className="shadow card m-3 px-3 py-4 px-sm-4 py-sm-5">
-          <h4 className="text-center">Sign in to App</h4>
+          <div className="avatar-container text-center mb-4">
+            {/* Custom Avatar Image */}
+            <img 
+              src="https://www.w3schools.com/w3images/avatar5.png" 
+              alt="Avatar"
+              className="avatar-image"
+              style={{ width: 60, height: 60, borderRadius: "50%", backgroundColor: "#00796b" }}
+            />
+          </div>
+          <h4 className="text-center">Sign In</h4>
           <p className="text-center mb-3">Enter your details below.</p>
           <FormikProvider value={formik}>
             <Form onSubmit={handleSubmit} className="p-fluid">
@@ -67,12 +79,12 @@ export default function LoginPage() {
                     })}
                   />
                   <label
-                    htmlFor="name"
+                    htmlFor="userid"
                     className={classNames({
                       "p-error": Boolean(touched.userid && errors.userid),
                     })}
                   >
-                    User ID*
+                    User ID
                   </label>
                 </span>
                 {Boolean(touched.userid && errors.userid) && (

@@ -45,6 +45,16 @@ export default function RegisterPage() {
     <div className="form-box">
       <div className="fullHeight p-ai-center p-d-flex p-jc-center">
         <div className="shadow card m-3 px-3 py-4 px-sm-4 py-sm-5">
+          <div className="avatar-container text-center mb-4">
+            {/* Custom Avatar Image */}
+            <img 
+              src="https://www.w3schools.com/w3images/avatar5.png" 
+              alt="Avatar"
+              className="avatar-image"
+              style={{ width: 60, height: 60, borderRadius: "50%", backgroundColor: "#00796b" }}
+            />
+            
+          </div>
           <h4 className="text-center">Sign Up to App</h4>
           <p className="text-center mb-3">Enter your details below.</p>
           <FormikProvider value={formik}>
@@ -66,7 +76,7 @@ export default function RegisterPage() {
                       "p-error": Boolean(touched.name && errors.name),
                     })}
                   >
-                    User ID*
+                    Name*
                   </label>
                 </span>
                 {Boolean(touched.name && errors.name) && (
@@ -141,7 +151,6 @@ export default function RegisterPage() {
               <div className="signupBox mt-3 text-center">
                 Already have an account? <Link to="/login">Log In</Link>
               </div>
-              
             </Form>
           </FormikProvider>
         </div>

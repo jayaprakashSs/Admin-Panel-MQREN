@@ -23,7 +23,7 @@ export default function Header() {
 
   const userMenu = [
     {
-      label: "Hi, User",
+      label: "Hi, Admin",
       items: [
         {
           label: "Home",
