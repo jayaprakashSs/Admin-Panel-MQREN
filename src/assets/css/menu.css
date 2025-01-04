@@ -1,87 +1,226 @@
-/* General Styles */
-body {
+/* Global Reset for Styling */
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: "Arial", sans-serif;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.sidebarWrapper {
-  background-color: #2c3e50; /* Dark sidebar background */
-  color: #ecf0f1; /* Light text color */
-  height: 100vh;
-  overflow-y: auto;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+body {
+  font-family: 'Arial', sans-serif;
 }
 
-/* Sidebar for Mobile */
-.p-sidebar {
-  background-color: #34495e !important;
-  color: #ecf0f1 !important;
-}
-
-.p-sidebar-header {
-  background-color: #2c3e50 !important;
-}
-
-.p-sidebar-content {
-  padding: 1rem;
-}
-
-/* Sidebar Content */
-.menuSidebar {
+/* Header Styling */
+.header-box {
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background-color: #333;
+  color: white;
 }
 
-.menus {
+.header-box .logo {
+  max-height: 40px;
+  width: auto;
+}
+
+.header-box button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.header-box .menu-items {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.menus .p-d-flex {
+.nav-list li {
+  margin-left: 20px;
+}
+
+.avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+.pi-bell {
+  position: relative;
+}
+
+.pi-bell .p-overlay-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 10px 20px;
+}
+
+.navbar-brand h1 {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.navbar-links {
+  display: flex;
+}
+
+.navbar-link {
   text-decoration: none;
-  color: #ecf0f1;
+  color: white;
+  margin: 0 15px;
+  font-size: 16px;
   display: flex;
   align-items: center;
-  padding: 0.8rem 1rem;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+  position: relative;
 }
 
-.menus .p-d-flex:hover {
-  background-color: #3498db;
-  color: white;
+.navbar-link.active {
+  color: #ff6f61;
 }
 
-.menus .p-d-flex.active {
-  background-color: #2980b9;
-  color: white;
+.navbar-link:hover {
+  color: #ff6f61;
 }
 
-.menuText {
-  margin-left: 0.8rem;
-  font-size: 1rem;
-  font-weight: 500;
+.navbar-text {
+  margin-left: 8px;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .p-d-lg-block {
-    display: none !important;
+.navbar-link i {
+  font-size: 20px;
+  transition: transform 0.3s;
+}
+
+.navbar-link:hover i {
+  transform: scale(1.1);
+}
+
+/* User Menu Styling */
+#user_pop_menu {
+  width: 200px;
+}
+
+.popup-notification {
+  padding: 15px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 8px;
+}
+
+.popup-notification .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.popup-notification .sub-title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.message-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.message-container .col-3 {
+  padding-right: 10px;
+}
+
+.message-container img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.message-box {
+  flex-grow: 1;
+}
+
+.message {
+  font-size: 14px;
+}
+
+.time {
+  font-size: 12px;
+  color: #999;
+}
+
+.time .pi-clock {
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+/* Empty Box for Menu Click */
+.emptyBoxForMenuClick {
+  display: none;
+}
+
+/* Media Query for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header-box {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .p-sidebar {
-    display: block !important;
-  }
-}
-
-@media (min-width: 1025px) {
-  .p-d-none {
-    display: none !important;
+  .navbar {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 20px;
   }
 
-  .p-d-lg-flex {
-    display: flex !important;
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-link {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-list li {
+    margin: 10px 0;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
   }
 }

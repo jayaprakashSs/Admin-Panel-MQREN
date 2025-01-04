@@ -1,0 +1,170 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* Set background to white */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Main container */
+  .view-employee-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, #e0f7fa, #80deea);
+    /* min-height: 100vh; Full viewport height */
+  }
+  
+  /* Content wrapper */
+  .container {
+    max-width: 1100px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 30px;
+  }
+  
+  /* Title */
+  .title {
+    text-align: center;
+    color: #333;
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-weight: 600;
+  }
+  
+  /* Search and Filters */
+  .filters-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f8f8; /* Soft background for filters */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .search-input,
+  .department-filter {
+    padding: 15px;
+    width: 48%;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  .search-input:focus,
+  .department-filter:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Table Styles */
+  .table-container {
+    margin-top: 30px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+  
+  th,
+  td {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  thead {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Action button styling */
+  .toggle-status-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .toggle-status-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Pagination Styles */
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-btn {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  .pagination-info {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .search-input, .department-filter {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .filters-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    table {
+      font-size: 14px;
+    }
+  
+    .pagination-btn {
+      padding: 10px 20px;
+    }
+  }
+  

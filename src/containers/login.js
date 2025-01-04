@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
@@ -17,6 +17,7 @@ const STATIC_USER = {
 
 export default function LoginPage() {
   const history = useHistory();
+  const [loginError, setLoginError] = useState(""); // State for tracking login errors
 
   const LoginSchema = Yup.object().shape({
     userid: Yup.string().required("User ID is required"),
@@ -37,13 +38,17 @@ export default function LoginPage() {
     },
     validationSchema: LoginSchema,
     onSubmit: (data) => {
+      // Reset the error state before login attempt
+      setLoginError("");
+
       // Check if entered credentials match static user
       if (data.userid === STATIC_USER.userid && data.password === STATIC_USER.password) {
         // Successful login, save token and redirect to dashboard
         localStorage.setItem("token", "sample-token"); // Simulating token
         history.push("/dashboard");
       } else {
-        alert("Invalid credentials!"); // Invalid credentials handling
+        // Set login error message
+        setLoginError("Invalid User ID or Password!");
       }
     },
   });
@@ -55,9 +60,8 @@ export default function LoginPage() {
       <div className="fullHeight p-ai-center p-d-flex p-jc-center">
         <div className="shadow card m-3 px-3 py-4 px-sm-4 py-sm-5">
           <div className="avatar-container text-center mb-4">
-            {/* Custom Avatar Image */}
-            <img 
-              src="https://www.w3schools.com/w3images/avatar5.png" 
+            <img
+              src="https://www.w3schools.com/w3images/avatar5.png"
               alt="Avatar"
               className="avatar-image"
               style={{ width: 60, height: 60, borderRadius: "50%", backgroundColor: "#00796b" }}
@@ -65,6 +69,14 @@ export default function LoginPage() {
           </div>
           <h4 className="text-center">Sign In</h4>
           <p className="text-center mb-3">Enter your details below.</p>
+
+          {/* Display login error */}
+          {loginError && (
+            <div className="error-box mb-3">
+              {loginError}
+            </div>
+          )}
+
           <FormikProvider value={formik}>
             <Form onSubmit={handleSubmit} className="p-fluid">
               <div className="p-field">

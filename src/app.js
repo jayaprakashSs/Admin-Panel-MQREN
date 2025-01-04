@@ -14,8 +14,8 @@ import ChangepasswordPage from "./containers/changepassword";
 import NotfoundPage from "./containers/notfound";
 import UserProfilePage from "./containers/userprofile";
 import EmployeeDetailsPage from "./containers/EmployeeDetailsPage";
-import LeaveManagementPage from "./containers/LeaveManagementPage"; // Import the newly created LeaveManagementPage
-
+import LeaveManagementPage from "./containers/LeaveManagementPage"; 
+import ViewEmployeeList from "./containers/ViewEmployeeList"; 
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
           <PrivateRoute exact path="/dashboard" component={DashboardPage} />
           <PrivateRoute exact path="/user-profile" component={UserProfilePage} />
           <Route exact path="/employee-details" component={EmployeeDetailsPage} />
+          <Route path="/employee-list" component={ViewEmployeeList} /> {/* Add the route for Leave Management */}
           <Route path="/leave-management" component={LeaveManagementPage} /> {/* Add the route for Leave Management */}
           <Route path="*" component={NotfoundPage} />
         </Switch>

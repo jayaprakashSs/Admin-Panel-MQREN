@@ -1,55 +1,49 @@
 import React from "react";
-import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import "../assets/css/dashboard.css";
 
 export default function DashboardPage() {
+  // List of employees with their present/absent status
   const employees = [
-    { id: 1, name: "John Doe" },
-    { id: 2, name: "Jane Smith" },
-    { id: 3, name: "Alice Johnson" },
-    { id: 4, name: "Bob Brown" },
-    { id: 5, name: "Charlie Davis" },
-    { id: 6, name: "David Wilson" },
-    { id: 7, name: "Emily Taylor" },
-    { id: 8, name: "Frank Harris" },
-    { id: 9, name: "Grace Lee" },
-    { id: 10, name: "Helen Clark" },
+    { id: 1, name: "John Doe", status: "Present" },
+    { id: 2, name: "Jane Smith", status: "Absent" },
+    { id: 3, name: "Alice Johnson", status: "Present" },
+    { id: 4, name: "Bob Brown", status: "Absent" },
+    { id: 5, name: "Charlie Davis", status: "Present" },
+    { id: 6, name: "David Wilson", status: "Absent" },
+    { id: 7, name: "Emily Taylor", status: "Present" },
+    { id: 8, name: "Frank Harris", status: "Absent" },
+    { id: 9, name: "Grace Lee", status: "Present" },
+    { id: 10, name: "Helen Clark", status: "Absent" },
     // Add more employees as needed
-  ]; // Example employee list with names
+  ];
+
+  // Count Present and Absent employees
+  const presentCount = employees.filter((employee) => employee.status === "Present").length;
+  const absentCount = employees.filter((employee) => employee.status === "Absent").length;
 
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header">
-        <h1>Employee Management Dashboard</h1>
-        <Button
-          label="Log Out"
-          className="p-button-danger"
-          onClick={() => {
-            localStorage.removeItem("token");
-            window.location.href = "/";
-          }}
-        />
-      </header>
-
       <section className="dashboard-content">
         <h2>Overview</h2>
         <div className="dashboard-cards">
           <Card title="Total Employees" className="dashboard-card">
-            <p>200</p>
+            <p>{employees.length}</p>
           </Card>
           <Card title="Present Today" className="dashboard-card">
-            <p>180</p>
+            <p>{presentCount}</p>
           </Card>
           <Card title="Absent Today" className="dashboard-card">
-            <p>20</p>
+            <p>{absentCount}</p>
           </Card>
         </div>
 
         <h2>Employee List</h2>
         <div className="dashboard-list">
           {employees.map((employee) => (
-            <p key={employee.id}>{employee.name}</p>
+            <p key={employee.id}>
+              {employee.name} - <strong>{employee.status}</strong>
+            </p>
           ))}
         </div>
       </section>

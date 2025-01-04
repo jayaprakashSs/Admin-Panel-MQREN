@@ -1,98 +1,104 @@
 .leave-management-container {
+    font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-    margin: 20px auto;
+    background: linear-gradient(135deg, #e0f7fa, #80deea);
+    
+  }
+  
+  .content {
+    max-width: 900px;
+    margin: auto;
   }
   
   h2 {
     text-align: center;
-    margin-bottom: 20px;
     color: #333;
   }
   
-  .search-bar {
+  .form-container {
     margin-bottom: 20px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .table {
+  .form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  .form-control {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .btn {
+    grid-column: span 2;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+  }
+  
+  table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .table th, .table td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ddd;
+  th, td {
+    padding: 10px;
+    text-align: left;
   }
   
-  .table th {
+  thead {
     background-color: #007bff;
     color: white;
   }
   
-  .table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
   }
   
-  .btn {
-    padding: 8px 15px;
-    margin: 5px;
-    font-size: 14px;
-    border-radius: 4px;
-    cursor: pointer;
+  tbody tr:hover {
+    background-color: #f1f1f1;
   }
   
   .btn-sm {
-    font-size: 12px;
     padding: 5px 10px;
+    font-size: 14px;
   }
   
-  .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
+  .btn-warning {
+    background-color: #ffc107;
   }
   
-  .btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+  .btn-warning:hover {
+    background-color: #e0a800;
   }
   
   .btn-danger {
     background-color: #dc3545;
-    border-color: #dc3545;
   }
   
   .btn-danger:hover {
     background-color: #c82333;
-    border-color: #bd2130;
-  }
-  
-  .pagination-container {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .pagination-container button {
-    padding: 8px 15px;
-    margin: 0 5px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .pagination-container button:hover {
-    background-color: #0056b3;
-    color: white;
-  }
-  
-  .pagination-container button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
   }
   
